@@ -1,0 +1,25 @@
+{
+  "name": "ng",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Sushil Aokar"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.8",
+    "angular-ui-router": "^0.2.18",
+    "angularjs-slider": "^5.8.0",
+    "lodash": "",
+    "angular-bootstrap": "^2.2.0",
+    "bootstrap": "^3.3.7"
+  }
+}

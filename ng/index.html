@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en-US">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+      <title>Search for flight</title>
+      <link rel="shortcut icon" href="images/fevicon-flight.png" type="image/x-icon" />
+      <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+      <link rel="stylesheet" type="text/css" href="bower_components/angularjs-slider/dist/rzslider.css"/>
+      <link rel="stylesheet" type="text/css"  href="css/style.css">
+   </head>
+   <body ng-app="flightEngine" align="center">
+      <div class="body-content">
+         <section id="mainContainer" ui-view></section>
+      </div>
+      <script src="bower_components/angular/angular.min.js"></script>
+      <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+      <script src="bower_components/lodash/lodash.js"></script>
+      <script src="bower_components/angularjs-slider/dist/rzslider.js"></script>
+      <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+      <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+      <script src="app.js"></script>
+      <script src="controller/flight.controller.js"></script>
+      <script src="directive/type.ahead.directive.js"></script>
+      <script src="directive/flight.display.directive.js"></script>
+   </body>
+</html>

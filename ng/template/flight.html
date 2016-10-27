@@ -1,0 +1,98 @@
+<div>
+   <div class="main-header marginb10">
+      <span>Flight Search Engine</span>
+   </div>
+   <div class="body-content">
+      <div class="search-panel s-p-width">
+         <div class="journey-type">
+            <ul>
+               <li ng-class="{'active-tab': oneWay,'inactive-tab': !oneWay}" ng-click="changeFlightMode(true);"><span>One Way</span></li>
+               <li ng-class="{'active-tab': !oneWay,'inactive-tab': oneWay}" ng-class="{'active-tab': !oneWay}" ng-click="changeFlightMode(false);"><span>Return</span></li>
+            </ul>
+         </div>
+         <div class="search-form">
+            <form novalidate name="inputForm">
+               <div>
+                  <type-ahead airports="airportsList" model="flight.origin" title="Enter Origin City" ></type-ahead>
+               </div>
+               <div>
+                  <type-ahead airports="airportsList" model="flight.destination" title="Enter Destination City" ></type-ahead>
+               </div>
+               <div>
+                  <p class="input-group">
+                     <input type="text" class="form-control f-input" uib-datepicker-popup="{{format}}" ng-model="flight.departureDate" is-open="calOneOpen" ng-required="true" placeholder="Departure Date" ng-class="{'error': formSubmitted && !flight.departureDate}" />
+                     <span class="input-group-btn">
+                     <button type="button" class="btn btn-default" ng-click="calOne()"><i class="glyphicon glyphicon-calendar"></i></button>
+                     </span>
+                  </p>
+               </div>
+               <div ng-if="!oneWay">
+                  <p class="input-group">
+                     <input type="text" class="form-control f-input" uib-datepicker-popup="{{format}}" ng-model="flight.returnDate" is-open="calTwoOpen" placeholder= "Return Date" ng-class="{'error': formSubmitted && !flight.returnDate && !oneWay}"  datepicker-options="{minDate: flight.departureDate}" />
+                     <span class="input-group-btn">
+                     <button type="button" class="btn btn-default" ng-click="calTwoOpen=true"><i class="glyphicon glyphicon-calendar"></i></button>
+                     </span>
+                  </p>
+               </div>
+               <div>
+                  <button type="button" class="book-button" ng-click="searchFlight()" ng-disabled="inputForm.$invalid" ng-class="{'disabled-btn': inputForm.$invalid}" >Search</button>
+               </div>
+            </form>
+         </div>
+         <div class="refine-search">
+            <div class="subheader">Refine Search</div>
+            <div>
+               <rzslider rz-slider-model="priceRange.slider.min" rz-slider-high="priceRange.slider.max" rz-slider-options="priceRange.slider.options"></rzslider>
+            </div>
+         </div>
+      </div>
+      <div class="flights-list f-l-width">
+         <div ng-if="!formSubmitted" class="subheader marginb10">
+            <span>Please use left panel to see available flights</span>
+         </div>
+         <div ng-if="formSubmitted">
+            <div class="subheader marginb10">
+               <span>Available Flights</span>
+            </div>
+            <div class="current-info">
+               <div class="inline-block">
+                  <div class="subheader-small">
+                     <span>{{originCity}} > {{destinationCity}} <span ng-if="!oneWay"> > {{originCity}}</span></span>
+                  </div>
+               </div>
+               <div class="inline-block f-right">
+                  <div>
+                     <span>Depart: </span><span>{{flight.departureDate | date:"dd MMM yyyy"}}</span>
+                  </div>
+                  <div ng-if="!oneWay">
+                     <span>Return: </span><span>{{flight.returnDate | date:"dd MMM yyyy"}}</span>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div ng-if="!formattedFlightData.length && !extraOrOneWayFlights.length && formSubmitted" class="margint10">Sorry, no flight found for your search. Please modify your search.</div>
+         <div ng-if="!availableReturnFlights.length && !oneWay && formSubmitted" class="margint10">Sorry, no return flight available for this criteria. Please modify criteria</div>
+         <div ng-if="!availableDepartFlights.length && formSubmitted" class="margint10">Sorry, no flight to Depart for this criteria. Please modify criteria</div>
+         <div class="flight-information" ng-repeat="flight in formattedFlightData track by $index" ng-if="formattedFlightData && !oneWay">
+            <div class="flight-details">
+               <div class="fare" ng-if="flight[1]">
+                  <span>
+                  {{flight[0].fare + flight[1].fare | currency : "Rs "}}
+                  </span>
+               </div>
+               <div>
+                  <flight-display flight-obj='flight[0]'></flight-display>
+                  <flight-display flight-obj='flight[1]'></flight-display>
+               </div>
+            </div>
+         </div>
+         <div class="flight-information" ng-repeat="flight in extraOrOneWayFlights track by $index" ng-if="extraOrOneWayFlights">
+            <div class="flight-details">
+               <div>
+                  <flight-display flight-obj='flight' fluid-display="oneWay || !formattedFlightData.length"></flight-display>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>

@@ -1,0 +1,32 @@
+<div class="single-flight" ng-class="{'f-right': flightObj.return, 'w-hundred': fluidDisplay}" ng-if="flightObj.fare" >
+   <div class="inline-block f-width">
+      <div class="margint10">
+         {{flightObj.fare | currency : "Rs "}}
+      </div>
+      <div class="margint10">
+         {{flightObj.flightNumber}}
+      </div>
+      <div class="margint10">
+         <span>{{flightObj.origin}}</span> > <span>{{flightObj.destination}}</span>
+      </div>
+      <div class="margint10">
+         <span>Depart: {{flightObj.departTime}}</span>
+      </div>
+      <div class="margint10">
+         <span>Arrive: {{flightObj.arriveTime | date:"h:mma"}}</span>
+      </div>
+      <div class="margint10">
+         <span>Duration: {{flightObj.duration | number: 2}} Hours</span>
+      </div>
+   </div>
+   <div class="inline-block f-width">
+      <div class="flight-book">
+         <div>
+            <span><img src="images/aero{{flightObj.img}}.png"></span> 
+         </div>
+         <div>
+            <button type="button" class="book-button" uib-tooltip="Hello There !!, I am not working right now!" tooltip-placement="right" ng-click="bookFlight()" >Book</button>
+         </div>
+      </div>
+   </div>
+</div>

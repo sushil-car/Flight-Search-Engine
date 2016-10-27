@@ -1,0 +1,11 @@
+<div class="type-ahead">
+   <div>
+      <input type="text" class="f-input" placeholder="{{options.title}}" ng-maxlength="254" ng-model="model" ng-model-options="{ debounce: 500 }" ng-required="true" />
+   </div>
+   <div class="list-items" ng-show="filterData.length">
+      <ul>
+         <li ng-repeat="item in filterData track by $index" ng-click="setValue(item)">{{item.airport}} ({{item.code}})
+         </li>
+      </ul>
+   </div>
+</div>
