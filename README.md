@@ -28,34 +28,4 @@ You can now search for the available flights, Enjoy... :)
 
 ------------------------------------------------------------------------------------------------------
 
-Test Cases:
-
-I have created sample JSON data accordingly. Following tests can be performed on the App.
-
-1)Input values as:
-    Departure Date = 30 Oct 2016
-    Return Date = 30 Oct 2016 
-	Origin: Delhi 
-	Destination: Pune
-
-Result: This will show the depart and returning flights
-
-2)Input values as:
-    Departure Date = 11 Nov 2016
-    Return Date = 11 Nov 2016 
-	Origin: Delhi 
-	Destination: Pune
-
-Result: Only depart flights are available i.e. no return flight
-
-3)Input values as:
-    Departure Date = 11 Nov 2016
-    Return Date = 11 Nov 2016 
-	Origin: Pune 
-	Destination: Delhi
-
-Result: Only return flights are available i.e. no flight from Pune to Delhi
-
-One calso test theapp by easily adding data to data.JSON file
-
-Thanks
+~Thanks :P
