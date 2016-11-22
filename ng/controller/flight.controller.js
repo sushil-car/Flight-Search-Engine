@@ -95,7 +95,7 @@ angular.module('flightEngine')
 
             $scope.priceRange.slider.min = 100;
             $scope.priceRange.slider.max = 50000;
-            flightsDataTemp
+            flightsDataTemp = [];
             $scope.formSubmitted = false;
             resetFlightsData();
         };
